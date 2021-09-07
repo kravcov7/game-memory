@@ -4,7 +4,7 @@ function swap(array, i, j) {
   array[j] = temp;
 }
 
-export function shuffleCards(array) {
+export default function moveCards(array) {
   const length = array.length;
   for (let i = length; i > 0; i--) {
     const randomIndex = Math.floor(Math.random() * i);
