@@ -1,13 +1,24 @@
 import s from "./card.module.css";
+import background from "../../image/background.jpg";
+import cn from "classnames";
 
-function Card({ el }) {
-  console.log(el);
+function Card({ el, onClick, index, isInactive, isFlipped, isDisabled }) {
+  const handleClick = () => {
+    !isFlipped && !isDisabled && onClick(index);
+  };
+
   return (
-    <div className={s.card}>
-      {/* <div className={s.card1}>
-        <img src={el.image} alt="front" className="img" />
-      </div> */}
-      <div className={s.card1}>
+    <div
+      className={cn(s.card, {
+        [s['is-flipped']]: isFlipped,
+        [s['is-inactive']]: isInactive,
+      })}
+      onClick={handleClick}
+    >
+      <div className={cn(s.card1, s['card1-front'])}>
+        <img src={background} alt="front" className={s.img} />
+      </div>
+      <div className={cn(s.card1, s["card1-back"])}>
         <img src={el.image} alt="front" className={s.img} />
       </div>
     </div>
